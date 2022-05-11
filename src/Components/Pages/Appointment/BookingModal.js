@@ -19,11 +19,11 @@ const BookingModal = ({treatment, date, setTreatment}) => {
 
                    <form onSubmit={handleBooking} className='grid grid-cols-1 gap-5 justify-items-center mt-5' action="">
                        <input type="text" disabled value={format(date, 'PP')} class="input input-bordered w-full max-w-xs" />
-        
-                        <select name='slot' class="select select-bordered w-full max-w-xs">
-                               {
-                                   slots.map(slot => <option value={slot}>{slot}</option>)
-                               }
+            
+                            <select name='slot' class="select select-bordered w-full max-w-xs">
+                                {
+                                    slots.map(slot => <option value={slot}>{slot}</option>)
+                                }
                             </select>
                        <input type="text" name='name' placeholder="Name" class="input input-bordered w-full max-w-xs" />
                        <input type="number" name='phone' placeholder="Phone Number" class="input input-bordered w-full max-w-xs" />

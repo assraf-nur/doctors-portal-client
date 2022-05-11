@@ -38,7 +38,7 @@ const Navbar = () => {
                 {navItems}
             </ul>
           </div>
-          <a class="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+          <Link to='/home' class="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
         </div>
         <div class="navbar-center hidden lg:flex navbar-end">
           <ul class="menu menu-horizontal p-0">

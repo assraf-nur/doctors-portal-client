@@ -11,10 +11,13 @@ const AppointBanner = ({date, setDate}) => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
     }
+
     let footer = <p>Please pick a day.</p>;
+
     if (date) {
       footer = <p>You picked {format(date, 'PP')}.</p>;
     }
+    
     return (
         <div style={myStyle}>
             <div class="hero min-h-screen">

@@ -12,8 +12,8 @@ const Testi = ({review}) => {
                 </div>
             </div>
             <div>
-                <h4>{review.name}</h4>
-                <p>{review.country}</p>
+                <h4 className='font-bold text-xl'>{review.name}</h4>
+                <p className='font-bold'>{review.country}</p>
             </div>
           </div>
         </div>

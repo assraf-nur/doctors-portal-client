@@ -1,20 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Home from "../../Home/Home";
-import About from "../About/About";
-import Appointment from "../Appointment/Appointment";
-import Contact from "../Contact/Contact";
-import Login from "../Login/Login";
-import Reviews from "../Reviews/Reviews";
-
 const Navbar = () => {
   const navItems = 
       <>
       <li><Link to='/home'>Home</Link></li>
-      <li><Link to='/about'>About</Link></li>
       <li><Link to='/appoint'>Appointment</Link></li>
       <li><Link to='/reviews'>Reviews</Link></li>
       <li><Link to='/contact'>Contact Us</Link></li>
+      <li><Link to='/about'>About</Link></li>
       <li><Link to='/login'>Login</Link></li> 
       </>
   return (

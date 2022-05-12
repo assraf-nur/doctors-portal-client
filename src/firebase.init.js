@@ -6,12 +6,12 @@ import {getAuth} from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:process.envREACT_APP_apiKey ,
-  authDomain:process.envREACT_APP_authDomain ,
-  projectId:process.envREACT_APP_projectId ,
-  storageBucket:process.envREACT_APP_storageBucket ,
-  messagingSenderId:process.envREACT_APP_messagingSenderId ,
-  appId:process.envREACT_APP_appId ,
+  apiKey: "AIzaSyBv6Jt-dLmAN4-kgA_Njc2lvyEHrxSw9NI",
+  authDomain: "doctors-portal-f2943.firebaseapp.com",
+  projectId: "doctors-portal-f2943",
+  storageBucket: "doctors-portal-f2943.appspot.com",
+  messagingSenderId: "254747553818",
+  appId: "1:254747553818:web:f7b969a27cc905651261a3"
 };
 
 // Initialize Firebase

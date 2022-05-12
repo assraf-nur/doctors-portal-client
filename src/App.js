@@ -4,7 +4,7 @@ import Home from './Components/Home/Home';
 import About from './Components/Pages/About/About';
 import Appointment from './Components/Pages/Appointment/Appointment';
 import Contact from './Components/Pages/Contact/Contact';
-import RequireAuth from './Components/Pages/Login/GetAuth';
+import RequireAuth from './Components/Pages/Login/RequireAuth';
 import Login from './Components/Pages/Login/Login';
 import SignUp from './Components/Pages/Login/SignUp';
 import Navbar from './Components/Pages/Navbar/Navbar';

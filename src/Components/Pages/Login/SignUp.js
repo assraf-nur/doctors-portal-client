@@ -17,6 +17,7 @@ const SignUp = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
@@ -48,7 +49,7 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     console.log("update done");
-    navigate("/appointment");
+    navigate("/appoint");
   };
   return (
     <div className="flex h-screen justify-center items-center">

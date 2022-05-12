@@ -8,19 +8,19 @@ const Info = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5 container mx-auto">
       <InfoCard
-        bgclassName="bg-primary"
+        bgClass="bg-primary"
         cardText="Lorem Ipsum is simply dummy text of the pri"
         cardTitle="Opening Hours"
         img={clock}
       ></InfoCard>
       <InfoCard
-        bgclassName="bg-accent"
+        bgClass="bg-accent"
         cardText="Brooklyn, NY 10036, United States"
         cardTitle="Visit our location"
         img={marker}
       ></InfoCard>
       <InfoCard
-        bgclassName="bg-secondary"
+        bgClass="bg-secondary"
         cardText="+000 123 456789"
         cardTitle="Contact us now"
         img={phone}

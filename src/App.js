@@ -12,6 +12,7 @@ import Reviews from './Components/Pages/Reviews/Reviews';
 
 function App() {
   return (
+    
     <div>
       <Navbar></Navbar>
       <Routes>

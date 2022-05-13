@@ -80,7 +80,7 @@ const SignUp = () => {
                 )}
               </label>
             </div>
-
+                                                          
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Email</span>

@@ -33,7 +33,7 @@ const Navbar = () => {
       }
       <li>
         {
-          user ? <button onClick={logout} class="btn btn-ghost">Log Out ({user.displayName.slice(0,6)})</button> : <Link to="/login">Login</Link>
+          user ? <button onClick={logout} class="btn btn-ghost">Log Out ({user.displayName})</button> : <Link to="/login">Login</Link>
         }
       </li>
     </>

@@ -2,16 +2,47 @@ import { format } from "date-fns";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import { toast } from 'react-toastify';
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
-  const { slots } = treatment;
+  const { slots, name, _id } = treatment;
   const [user] = useAuthState(auth);
+  const formattedDate = format(date, 'PP')
 
   const handleBooking = (e) => {
     e.preventDefault();
     const slot = e.target.slot.value;
-    setTreatment(null);
+
+    const booking = {
+      treatmentId: _id,
+      treatment: name,
+      date: formattedDate,
+      slot,
+      patient: user.displayName,
+      phone: e.target.phone.value
+    }
+
+    fetch('http://localhost:5000/booking', {
+      method: 'POST',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(booking)
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      if(data.success){
+        toast(`Appointment is set, ${formattedDate} at ${slot}`)
+      }
+
+      else{
+        toast.error(`you already have an appointment on ${data.booking?.date} at ${data.booking?.slot}`)
+      }
+      setTreatment(null);
+    })
   };
+
   return (
     <div>
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -40,14 +71,14 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
               type="text"
               name="name"
               disabled
-              value={user?.displayName || ''}
+              value={user?.displayName || ""}
               placeholder="Name"
               className="input input-bordered w-full max-w-xs"
             />
             <input
               type="email"
               name="email"
-              value={user?.email || ''}
+              value={user?.email || ""}
               disabled
               placeholder="Email"
               className="input input-bordered w-full max-w-xs"

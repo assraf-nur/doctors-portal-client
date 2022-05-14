@@ -48,6 +48,10 @@ const SignUp = () => {
     console.log(user || gUser);
   }
 
+  if(token){
+    navigate("/appoint");
+  }
+
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });

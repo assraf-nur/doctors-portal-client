@@ -1,9 +1,9 @@
 import { format } from "date-fns";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AppointService from "./AppointService";
 import BookingModal from "./BookingModal";
 import Loading from '../Login/Loading'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 
 const AvailableAppointments = ({ date, setDate }) => {
   // const [services, setServices] = useState([]);

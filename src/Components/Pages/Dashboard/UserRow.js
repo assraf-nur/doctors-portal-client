@@ -23,7 +23,6 @@ const UserRow = ({user, refetch}) => {
                 toast.success('Make successfully')
             }
         })
-        
     }
     return (
         <tr>

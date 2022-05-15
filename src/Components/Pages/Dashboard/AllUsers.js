@@ -5,7 +5,7 @@ import UserRow from './UserRow';
 
 const AllUsers = () => {
 
-    const {data: users, isLoading} = useQuery('users', ()=> fetch(`http://localhost:5000/user`,
+    const {data: users, isLoading, refetch} = useQuery('users', ()=> fetch(`http://localhost:5000/user`,
     // for access token of JWT
     {
         method: 'GET',
@@ -37,7 +37,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                     {/* <!-- row 1 --> */}
-                    {users.map(user => <UserRow key={user._id} user={user}></UserRow>)}
+                    {users.map(user => <UserRow key={user._id} user={user} refetch={refetch}></UserRow>)}
                     </tbody>
                 </table>
                 </div>

@@ -12,7 +12,7 @@ const useAdmin = user =>{
             headers: {
                 'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            },
+            }
         })
         .then(res => res.json())
         .then(data => {
@@ -21,7 +21,7 @@ const useAdmin = user =>{
         })
         }
     },[user])
-    return [{admin, adminLoading}];
+    return [admin, adminLoading];
 }
 
 export default useAdmin;

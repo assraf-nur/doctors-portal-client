@@ -1,7 +1,7 @@
 import React from "react";
 
 const AppointService = ({ service, setTreatment }) => {
-  const { name, slots } = service;
+  const { price, name, slots } = service;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <div className="card-body">
@@ -18,6 +18,7 @@ const AppointService = ({ service, setTreatment }) => {
         <p className="mx-auto">
           {slots.length} {slots.length > 1 ? "spaces" : "space"} Available
         </p>
+        <p className="text-center"><small className="text-accent">Booking Price: {price} $</small></p>
         <div className="card-actions justify-center">
           <label
             disabled={slots.length === 0}

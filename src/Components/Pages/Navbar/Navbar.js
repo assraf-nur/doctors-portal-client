@@ -21,9 +21,6 @@ const Navbar = () => {
         <Link to="/appoint">Appointment</Link>
       </li>
       <li>
-        <Link to="/reviews">Reviews</Link>
-      </li>
-      <li>
         <Link to="/contact">Contact Us</Link>
       </li>
       <li>
@@ -71,7 +68,7 @@ const Navbar = () => {
             Doctors Portal
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex navbar-end">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{navItems}</ul>
         </div>
       </div>

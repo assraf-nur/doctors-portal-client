@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 
 const MyAppointments = () => {
@@ -34,16 +34,17 @@ const MyAppointments = () => {
       <div class="overflow-x-auto">
         <table class="table w-full">
           {/* <!-- head --> */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Treatment</th>
-            </tr>
-          </thead>
-          <tbody>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Treatment</th>
+                <th>Payment</th>
+              </tr>
+            </thead>
+            <tbody>
             {/* <!-- row 1 --> */}
             {appointments.map((a, index) => (
               <tr>
@@ -52,6 +53,8 @@ const MyAppointments = () => {
                 <td>{a.date}</td>
                 <td>{a.slot}</td>
                 <td>{a.treatment}</td>
+                <td>{(a.price && !a.paid) && <Link to={``}><button className="btn btn-xs btn-success">Payment</button></Link>}</td>
+                <td>{(a.price && a.paid) && <span className="text-success">Paid</span>}</td>
               </tr>
             ))}
           </tbody>

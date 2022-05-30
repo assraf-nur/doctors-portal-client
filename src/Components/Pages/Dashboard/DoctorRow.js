@@ -5,7 +5,7 @@ const DoctorRow = ({ doctor, index, refetch }) => {
   const { name, image, specialty, email } = doctor;
 
   const handleDocRemove = (email) => {
-    fetch(`http://localhost:5000/doctor/${email}`, {
+    fetch(`https://limitless-crag-35256.herokuapp.com/doctor/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -4,8 +4,12 @@ import Loading from "../Login/Loading";
 import DoctorRow from "./DoctorRow";
 
 const ManageDoctors = () => {
-  const { data: doctors, isLoading, refetch } = useQuery("doctors", () =>
-    fetch("http://localhost:5000/doctors", {
+  const {
+    data: doctors,
+    isLoading,
+    refetch,
+  } = useQuery("doctors", () =>
+    fetch("https://limitless-crag-35256.herokuapp.com/doctors", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -18,7 +22,7 @@ const ManageDoctors = () => {
 
   return (
     <div className="mt-5">
-        <h2 className="text-2xl font-bold mb-3">Doctor List</h2>
+      <h2 className="text-2xl font-bold mb-3">Doctor List</h2>
       <div class="overflow-x-auto">
         <table class="table w-full">
           {/* <!-- head --> */}
@@ -33,14 +37,14 @@ const ManageDoctors = () => {
           </thead>
           <tbody>
             {/* <!-- row 1 --> */}
-            {
-                doctors.map((doctor, index) => <DoctorRow 
-                key={doctor._id} 
-                doctor={doctor} 
+            {doctors.map((doctor, index) => (
+              <DoctorRow
+                key={doctor._id}
+                doctor={doctor}
                 index={index}
-                refetch = {refetch}
-                ></DoctorRow>)
-            }
+                refetch={refetch}
+              ></DoctorRow>
+            ))}
           </tbody>
         </table>
       </div>

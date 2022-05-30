@@ -9,24 +9,26 @@ const MyAppointments = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/booking?patient=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://limitless-crag-35256.herokuapp.com/booking?patient=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
-          console.log(res);
-          if(res.status === 401 || res.status === 403){
-              signOut(auth);
-              localStorage.removeItem('accessToken');
-              Navigate('/');
-          }
-          return res.json()
+        console.log(res);
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          Navigate("/");
+        }
+        return res.json();
       })
       .then((data) => {
-
-        setAppointments(data)
+        setAppointments(data);
       });
   }, [user.email]);
   return (
@@ -34,17 +36,17 @@ const MyAppointments = () => {
       <div class="overflow-x-auto">
         <table class="table w-full">
           {/* <!-- head --> */}
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Treatment</th>
-                <th>Payment</th>
-              </tr>
-            </thead>
-            <tbody>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Treatment</th>
+              <th>Payment</th>
+            </tr>
+          </thead>
+          <tbody>
             {/* <!-- row 1 --> */}
             {appointments.map((a, index) => (
               <tr>
@@ -53,8 +55,20 @@ const MyAppointments = () => {
                 <td>{a.date}</td>
                 <td>{a.slot}</td>
                 <td>{a.treatment}</td>
-                <td>{(a.price && !a.paid) && <Link to={``}><button className="btn btn-xs btn-success">Payment</button></Link>}</td>
-                <td>{(a.price && a.paid) && <span className="text-success">Paid</span>}</td>
+                <td>
+                  {a.price && !a.paid && (
+                    <Link to={`/dashboard/payment/${a._id}`}>
+                      <button className="btn btn-xs btn-success">
+                        Payment
+                      </button>
+                    </Link>
+                  )}
+                </td>
+                <td>
+                  {a.price && a.paid && (
+                    <span className="text-success">Paid</span>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

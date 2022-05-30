@@ -9,11 +9,13 @@ const AddDoctor = () => {
     register,
     formState: { errors },
     handleSubmit,
-    reset
+    reset,
   } = useForm();
 
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch("http://localhost:5000/services").then((res) => res.json())
+    fetch("https://limitless-crag-35256.herokuapp.com/services").then((res) =>
+      res.json()
+    )
   );
 
   const imageStorageKey = "0e7bd6815634239539191e8d52b068ab";
@@ -30,35 +32,33 @@ const AddDoctor = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        if(result.success === true){
+        if (result.success === true) {
           const img = result.data.url;
-          console.log('data', result);
+          console.log("data", result);
           const doctor = {
-            name : data.name,
+            name: data.name,
             email: data.email,
             image: img,
             specialty: data.specialty,
-          }
+          };
           // send to database
-          fetch('http://localhost:5000/doctor',{
-            method: 'POST',
+          fetch("https://limitless-crag-35256.herokuapp.com/doctor", {
+            method: "POST",
             headers: {
-              'content-type' : 'application/json',
-              authorization: `Bearer ${localStorage.getItem('accessToken')}`
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
-            body: JSON.stringify(doctor)
+            body: JSON.stringify(doctor),
           })
-          .then(res => res.json())
-          .then(inserted => {
-            if(inserted.insertedId){
-              toast.success('Doctor added successfully')
-              reset();
-            }
-            else{
-              toast.error('Failed to add the doctor');
-            }
-          })
-
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast.success("Doctor added successfully");
+                reset();
+              } else {
+                toast.error("Failed to add the doctor");
+              }
+            });
         }
       });
   };
